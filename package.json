@@ -8,11 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  
-    "compilerOptions": {
-      "allowSyntheticDefaultImports": true
-    }
-  ,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.0.3",

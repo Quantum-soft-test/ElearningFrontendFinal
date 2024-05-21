@@ -61,17 +61,17 @@ const routes: Routes = [
   {path:'userdashboard',component:UserdashboardComponent,canActivate:[UserGuard]},
   {path:'professordashboard',component:ProfessordashboardComponent,canActivate:[ProfessorGuard]},
   {path:'addProfessor',component:AddprofessorComponent,canActivate:[AdminGuard]},
-  {path:'addCourse',component:AddcourseComponent,canActivate:[RouterGuard]},
+  //{path:'addCourse',component:AddcourseComponent,canActivate:[RouterGuard]},
   {path:'approveprofessor',component:ApprovalstatusComponent,canActivate:[RouterGuard]},
   {path:'professorlist',component:ProfessorlistComponent,canActivate:[RouterGuard]},
   {path:'userlist',component:UserlistComponent,canActivate:[RouterGuard]},
-  {path:'courselist',component:CourselistComponent,canActivate:[RouterGuard]},
-  {path:'addchapter',component:AddchapterComponent,canActivate:[RouterGuard]},
-  {path:'fullcourse/:coursename',component:FullcourseComponent,canActivate:[RouterGuard]},
+  //{path:'courselist',component:CourselistComponent,canActivate:[RouterGuard]},
+  //{path:'addchapter',component:AddchapterComponent,canActivate:[RouterGuard]},
+  //{path:'fullcourse/:coursename',component:FullcourseComponent,canActivate:[RouterGuard]},
   {path:'editprofessorprofile',component:ProfessorprofileComponent,canActivate:[ProfessorGuard]},
   {path:'edituserprofile',component:UserprofileComponent,canActivate:[UserGuard]},
-  {path:'mywishlist',component:MywishlistComponent,canActivate:[RouterGuard]},
-  {path:'mycourses',component:MycoursesComponent,canActivate:[RouterGuard]}
+  //{path:'mywishlist',component:MywishlistComponent,canActivate:[RouterGuard]},
+ // {path:'mycourses',component:MycoursesComponent,canActivate:[RouterGuard]}
 ];
 
 @NgModule({

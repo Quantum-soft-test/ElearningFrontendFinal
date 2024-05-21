@@ -45,7 +45,6 @@ export class UserprofileComponent implements OnInit {
   {
     $("#profilecard").hide();
     $("#profileform").show();
-    this.getProfileDetails(this.user.email);
   }
 
   getProfileDetails(loggedUser : string)

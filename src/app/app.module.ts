@@ -31,13 +31,15 @@ import { MycoursesComponent } from './components/mycourses/mycourses.component';
 import { MywishlistComponent } from './components/mywishlist/mywishlist.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+
 import { jobsComponent } from './components/jobs/jobs.component';
-import { aboutusComponent } from './components/aboutus/aboutus.component';
-import { EventsComponent } from './components/events/events.component';
 import { ReviewComponent } from './components/review/review.component';
+import { EventsComponent } from './components/events/events.component';
+import { TermConditionComponent } from './components/term-condition/term-condition.component';
 import { PlacementsComponent } from './components/placements/placements.component';
-import { ReferEarnComponent } from './components/refer-earn/refer-earn.component';
+import { aboutusComponent } from './components/aboutus/aboutus.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { ReferEarnComponent } from './components/refer-earn/refer-earn.component';
 
 
 @NgModule({
@@ -45,15 +47,6 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
   declarations: [
     AppComponent,
     LoginComponent,
-  
-    EventsComponent,
-    ReviewComponent,
-    PlacementsComponent,
-    ReferEarnComponent,
-    PrivacyPolicyComponent,
-
-  
-
     RegistrationComponent,
     RegistrationsuccessComponent,
     UserdashboardComponent,
@@ -75,9 +68,16 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     MywishlistComponent,
     WelcomepageComponent,
     ResetpasswordComponent,
+
+    ReviewComponent,
+    ReferEarnComponent,
+    EventsComponent,
+    TermConditionComponent,
+    PlacementsComponent,
     jobsComponent,
-  
     aboutusComponent,
+    PrivacyPolicyComponent
+   
     
   ],
   
@@ -89,8 +89,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     AppRoutingModule,
     CarouselModule,
     YouTubePlayerModule,
-  
     MDBBootstrapModule.forRoot(),
+    
     
   ],
   providers: [ResetpasswordComponent,jobsComponent],

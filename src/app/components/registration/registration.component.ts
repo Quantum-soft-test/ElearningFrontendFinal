@@ -39,28 +39,46 @@ export class RegistrationComponent implements OnInit {
 
   registerUser()
   {
-    this._registrationService.registerUserFromRemote(this.user).subscribe(
-      data => {
-        
-        console.log("Registration Success");
-        sessionStorage.setItem("username",this.user.username);
-        sessionStorage.setItem("gender",this.user.gender);
-        console.log(this.user);
-        this._router.navigate(['/registrationsuccess']);
-        
-      },
-      error => {
-        console.log("Registration Failed");
-        console.log(error.error);
-        this.msg = "User with "+this.user.email+" already exists !!!";
-      }
-    )
-  }
 
+   
+      if (this.termsAndConditionsChecked) {
+        this._registrationService.registerUserFromRemote(this.user).subscribe(
+          data => {
+            
+            console.log("Registration Success");
+            sessionStorage.setItem("username",this.user.username);
+            sessionStorage.setItem("gender",this.user.gender);
+            console.log(this.user);
+            this._router.navigate(['/registrationsuccess']);
+            
+          },
+          error => {
+            console.log("Registration Failed");
+            console.log(error.error);
+            this.msg = "User with "+this.user.email+" already exists !!!";
+          }
+        )
+        console.log('User registered successfully!');
+      } else {
+        console.log('Please agree to the terms and conditions to register.');
+      }
+    }
+   
+  
+
+    validatePassword(password: string): boolean {
+      const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{6,20}$/;
+      return passwordRegex.test(password);
+    }
   registerProfessor()
   {
-
-    if (this.termsAndConditionsChecked) {
+    const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+    if (!passwordRegex.test(this.professor.password)) {
+      console.log('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.');
+      return;
+    }
+  
+    if (this.termsAndConditionsChecked  && !this.validatePassword(this.professor.password)) {
       this._registrationService.registerProfessorFromRemote(this.professor).subscribe(
         data => {
           console.log("Registration Success");

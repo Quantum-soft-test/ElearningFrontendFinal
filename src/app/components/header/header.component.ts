@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   
@@ -10,11 +13,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  profileDetails : Observable<User[]> | undefined;
   loggedUser = '';
   currRole = '';
   title = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private _router : Router) { }
+  constructor(private _service: UserService, activatedRoute: ActivatedRoute, private _router : Router) { }
 
   ngOnInit(): void 
   {
@@ -35,6 +39,22 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+    // else if(this.currRole === "Home"){
+    //   this.title = "";
+
+
+    // else if (this.currRole === "welcomepage")
+    // {
+    //   this.title = "";
+    // }
+    
+    confirmLogout(): void{
+      const userConfirmed = window.confirm("Are you sure you want to log out?");
+      if (userConfirmed) {
+        this.logout();
+      }
+    }
+
   logout()
   {
     sessionStorage.clear();
@@ -45,6 +65,7 @@ export class HeaderComponent implements OnInit {
   {
     if(this.loggedUser === "admin@gmail.com"){
       this._router.navigate(['/admindashboard']);
+    
     }
     else if(this.currRole === "professor"){
       this._router.navigate(['/professordashboard']);
@@ -53,6 +74,24 @@ export class HeaderComponent implements OnInit {
       this._router.navigate(['/userdashboard']);
     }
   }
+  
+    getProfileDetails(loggedUser : string)
+  {
+    this.profileDetails = this._service.getProfileDetails(this.loggedUser);
+    console.log(this.profileDetails);
 
+
+    // else if (this.currRole === "welcompage")
+    //    {
+    //     this._router.navigate(['/userdashboard'])
+    //   }
+
+    // else if(this.currRole === "welcomepage")
+    //   {
+    //     this._router.navigate(['/professordashboard'])
+    //   }
+
+  }
 
 }
+

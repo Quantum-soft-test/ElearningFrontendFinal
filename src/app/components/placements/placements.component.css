@@ -6,22 +6,28 @@ body {
   }
   
   header {
-    background-color: #76dede;
+    background-color: #91c4c4;
     padding: 50px;
     text-align: center;
     font-size: large;
-   font-size: large; }
+    font-size: large; }
+
   
   header img {
+
     max-width: 300px;
     max-height: 300px;
+
   }
   
   h1 {
+
     margin-top: 20px;
   }
   
+
   main {
+
     padding: 20px;
   }
   
@@ -41,10 +47,8 @@ body {
 display:inline-block;
   width: 350px;
   height:360px;
- 
   background-color:#b2bcbd;
   border-radius:8px;
-  
   box-shadow: 0 4px 8px 0 rgba(0, 2, 4, 0.2);
   max-width: 400px;
   margin-right: 50px;
@@ -78,9 +82,7 @@ button {
   width: 100%;
   font-size: 18px;
   margin-left: 1000px;
-  
-
-  
+   
 }
 
 a {
@@ -91,4 +93,5 @@ a {
 
 button:hover, a:hover {
   opacity: 0.7;
+  
 }

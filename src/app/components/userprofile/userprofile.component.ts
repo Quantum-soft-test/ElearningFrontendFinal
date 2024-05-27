@@ -45,12 +45,15 @@ export class UserprofileComponent implements OnInit {
   {
     $("#profilecard").hide();
     $("#profileform").show();
+    this.getProfileDetails(this.user.email);
   }
 
   getProfileDetails(loggedUser : string)
   {
     this.profileDetails = this._service.getProfileDetails(this.loggedUser);
     console.log(this.profileDetails);
+
+    
     // this._service.getProfileDetails(loggedUser).subscribe(
     //   (data: any) => {
     //     this.profileDetails = data; // Assign fetched profile details to profileDetails variable

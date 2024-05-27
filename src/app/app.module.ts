@@ -31,15 +31,13 @@ import { MycoursesComponent } from './components/mycourses/mycourses.component';
 import { MywishlistComponent } from './components/mywishlist/mywishlist.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
-
 import { jobsComponent } from './components/jobs/jobs.component';
-import { ReviewComponent } from './components/review/review.component';
-import { EventsComponent } from './components/events/events.component';
-import { TermConditionComponent } from './components/term-condition/term-condition.component';
-import { PlacementsComponent } from './components/placements/placements.component';
 import { aboutusComponent } from './components/aboutus/aboutus.component';
-import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { EventsComponent } from './components/events/events.component';
+import { ReviewComponent } from './components/review/review.component';
+import { PlacementsComponent } from './components/placements/placements.component';
 import { ReferEarnComponent } from './components/refer-earn/refer-earn.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 
 @NgModule({
@@ -47,6 +45,15 @@ import { ReferEarnComponent } from './components/refer-earn/refer-earn.component
   declarations: [
     AppComponent,
     LoginComponent,
+  
+    EventsComponent,
+    ReviewComponent,
+    PlacementsComponent,
+    ReferEarnComponent,
+    PrivacyPolicyComponent,
+
+  
+
     RegistrationComponent,
     RegistrationsuccessComponent,
     UserdashboardComponent,
@@ -68,16 +75,9 @@ import { ReferEarnComponent } from './components/refer-earn/refer-earn.component
     MywishlistComponent,
     WelcomepageComponent,
     ResetpasswordComponent,
-
-    ReviewComponent,
-    ReferEarnComponent,
-    EventsComponent,
-    TermConditionComponent,
-    PlacementsComponent,
     jobsComponent,
+  
     aboutusComponent,
-    PrivacyPolicyComponent
-   
     
   ],
   
@@ -89,8 +89,8 @@ import { ReferEarnComponent } from './components/refer-earn/refer-earn.component
     AppRoutingModule,
     CarouselModule,
     YouTubePlayerModule,
+  
     MDBBootstrapModule.forRoot(),
-    
     
   ],
   providers: [ResetpasswordComponent,jobsComponent],

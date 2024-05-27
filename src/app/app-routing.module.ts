@@ -71,7 +71,7 @@ const routes: Routes = [
   {path:'editprofessorprofile',component:ProfessorprofileComponent,canActivate:[ProfessorGuard]},
   {path:'edituserprofile',component:UserprofileComponent,canActivate:[UserGuard]},
   {path:'mywishlist',component:MywishlistComponent,canActivate:[RouterGuard]},
- {path:'mycourses',component:MycoursesComponent,canActivate:[RouterGuard]}
+  {path:'mycourses',component:MycoursesComponent,canActivate:[RouterGuard]}
 ];
 
 @NgModule({

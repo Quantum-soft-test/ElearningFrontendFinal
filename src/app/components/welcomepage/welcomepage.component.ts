@@ -8,6 +8,7 @@ import * as $ from 'jquery';
   templateUrl: './welcomepage.component.html',
   styleUrls: ['./welcomepage.component.css']
 })
+
 export class WelcomepageComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,private _router : Router) { }

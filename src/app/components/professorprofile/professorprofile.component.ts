@@ -46,6 +46,10 @@ export class ProfessorprofileComponent implements OnInit {
     console.log(this.profileDetails);
   }
 
+  // getUserName(loggedUser : string)
+  // {
+  //   this.
+  
   updateProfessorProfile()
   {
     this._service.UpdateUserProfile(this.professor).subscribe(

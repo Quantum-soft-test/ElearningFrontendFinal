@@ -1,3 +1,4 @@
+
 <div class="All">
 <div class="content">
 
@@ -5,10 +6,12 @@
     <div class="nav">
      <label></label>
      <div class="switchs">
+
       <button style="font-weight: bold;" class="log" id="log" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
-      <button style="font-weight: bold;" class="log" id="log" onclick="location.href='#Our services';"><i class="fa fa-cog"></i> Services</button>
+      <button style="font-weight: bold;" class="log" id="log" onclick="location.href='#scrollspyHeading1';"><i class="fa fa-cog"></i> Services</button>
       <button style="font-weight: bold;" class="log" id="log" [routerLink]="['/login']"><i class="fa fa-sign-in"></i> LOGIN</button>
       <button style="font-weight: bold;" class="create_acc" id="create_acc" [routerLink]="['/registration']"><i class="fa fa-user-plus"></i> CREATE ACCOUNT</button>
+      
     </div>
   </div>
   <div class="main">
@@ -33,7 +36,7 @@
 <div class="about-container">
       <div class="subtext1" id="subtext2"><span class="counter">02</span> &nbsp;Three Different Modes<i id="subtext2" class="fa fa-caret-down"></i></div>
       <div class="innertext1" id="innertext2">This elearning Portal has three different modes of working as <b style="color:darkblue; font-size: larger; font-weight: bolder;">ADMIN, PROFESSOR & USER.</b> Each of them can access to their respective features and perform their task accordingly. (by default, the ADMIN will be <b style="color: darkgreen; font-size: larger; font-weight: bolder;"> </b><b style="color: darkred;">(portal creator)</b></div>
-</div>
+</div>l
 <div class="about-container">
       <div class="subtext1" id="subtext3"><span class="counter">03</span> &nbsp;Who can enrol in Quantumsoft Technologies Better Courses? <i id="subtext3" class="fa fa-caret-down"></i></div>
       <div class="innertext1" id="innertext3">Quantumsoft Technologies courses are open to anyone willing to learn new things. There is no limitation with respect to your educational background or stage of study. The courses are especially beneficial for people who have jobs or other commitments and therefore want to learn from scratch at their own pace. Also, if you have already done some courses and want our placement services, you can enrol in any of the two courses and be eligible for placements just after clearing the competency tests.<b style="color: darkgreen; font-size: larger; font-weight: bolder;">video based lectures</b> and <b style="color: darkgreen; font-size: larger; font-weight: bolder;">website based lectures.</b> The <b style="color: darkred; font-size: medium; font-weight: bolder;">ADMIN</b> or <b style="color: darkred; font-size: medium; font-weight: bolder;">PROFESSOR</b> can specify the course type while adding a new course</div>
@@ -54,26 +57,52 @@
 
 
 <footer>
+
+  
   <div class="footer-container">
       <div class="footer-section">
-          <h3>Get to Know Us</h3>
-          <ul>
-              <li><a [routerLink]="['/aboutus']">About Us</a></li>
-              <li><a [routerLink]="['/referearn']">Refer and earn </a></li>
-              <li><a [routerLink]="['/jobs']">jobs </a></li>
-              <li><a [routerLink]="['/placements']">Placement</a></li>
+        <h3 style="position:relative; left: -40px;">Get to Know Us</h3>
+          <ul style="list-style: none; display: block; float: left;">
+           
+              <li style="top:-3px;"><a [routerLink]="['/aboutus']">About Us</a></li>
+              <li style="top:-3px;"><a [routerLink]="['/referearn']">Refer and earn </a></li>
+              <li style="top:-3px;"><a [routerLink]="['/jobs']">jobs </a></li>
+              <li style="top:-3px;"><a [routerLink]="['/placements']">Placement</a></li>
           </ul>
+
       </div>
       <div class="footer-section">
-          <h3>Connect with Us</h3>
-          <ul>
+          <h3 style="position:relative; left: -40px;">Connect with Us</h3>
+          <ul style="list-style: none; display: block; float: left;">
               <li><a href="#">Facebook</a></li>
               <li><a href="#">Twitter</a></li>
               <li><a href="#">Instagram</a></li>
           </ul>
       </div>
       <div class="footer-section">
-          <h3>Our services</h3>
+          
+
+
+        <h3 id="scrollspyHeading1" style="position:relative; left: -40px;">Our services</h3>
+        <ul style="list-style: none; display: block; float: left;">
+          <li><a [routerLink]="['/registration']">Hire From Us</a></li>
+          <li><a [routerLink]="['/review']">Reviews</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=20.923377846140507,77.76937754212156" target="_blank">Company Location</a></li>
+          <li><a [routerLink]="['/privacypolicy']">Privacy Policy</a></li>
+          <li><a [routerLink]="['/termcondition']">Terms & Condition</a></li>
+          <li><a [routerLink]="['/events']">Events</a></li>
+        </ul>
+
+     
+        
+
+        
+
+
+
+          <!-- <h3 id="scrollspyHeading1">Our services</h3>
+
+
           <ul>
               <li><a [routerLink]="['/registration']">Hire From Us</a></li>
               <li><a [routerLink]="['/review']">Reviews</a></li>
@@ -82,13 +111,13 @@
             
               <li><a [routerLink]="['/termcondition']">Terms & condition  </a></li>
           
-              <li><a [routerLink]="['/events']">Events  </a></li>
+              <li><a [routerLink]="['/events']">Events  </a></li> -->
               
               
-          </ul>
+          <!-- </ul> -->
       </div>
       <div class="footer-section">
-          <h3>Contact Us </h3>
+          <h3 style="position:relative; left: -40px;">Contact Us</h3>
           <ul>
               <li>
                 
@@ -115,7 +144,7 @@
 
 
 
-<!-- <main id="main">
+ <!-- <main id="main">
 <section id="services" class="services section-bg">
   <div class="container" data-aos="fade-up">
     <div class="section-title">
@@ -145,6 +174,8 @@
     </div>
   </div>
 </section>
-</main> -->
-</div>
-<app-footer> </app-footer>
+</main> 
+</div> -->
+
+
+<app-footer> </app-footer> 

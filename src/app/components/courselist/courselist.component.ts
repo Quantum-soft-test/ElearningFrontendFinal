@@ -207,7 +207,7 @@ gotoURL(url : string)
    pullDrag: true,
    dots: false,
    navSpeed: 1000,
-   autoplay: true,
+   autoplay: false,
    navText: ['Previous', 'Next'],
    responsive: {
      0: {

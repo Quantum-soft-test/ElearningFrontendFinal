@@ -83,6 +83,8 @@ console: any;
           sessionStorage.setItem('ROLE', "user");
           sessionStorage.setItem('name', this.user.email);
           sessionStorage.setItem('gender', "male");
+          sessionStorage.setItem('username',data.username);
+         
           this._router.navigate(['/userdashboard']);
         },
         (error: { error: any; }) => {
@@ -104,6 +106,7 @@ console: any;
           sessionStorage.setItem('ROLE', "professor");
           sessionStorage.setItem('professorname',this.professor.email);
           sessionStorage.setItem('gender', "male");
+          sessionStorage.setItem('professorname', data.professorname);
           this._router.navigate(['/professordashboard']);
         },
         (error: { error: any; }) => {

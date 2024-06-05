@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { data } from 'jquery';
 import { Observable, observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -24,9 +25,17 @@ export class UserprofileComponent implements OnInit {
   msg = ' ';
   currRole = '';
    loggedUser = '';
-  // temp = false;
+   selectedFile: File | null = null;
+   profileImage$: Observable<Blob> | undefined;
+   email = this.user.email;
+   imageData: string = '';
+ 
+  editingProfile: boolean = false; // Initialize editingProfile flag
+   
+   profileImageURL: string | undefined;
+   // temp = false;
 
-  constructor(private _service: UserService, private activatedRoute: ActivatedRoute, private _router : Router) { }
+  constructor(private _service: UserService, private http: HttpClient,private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer,private _router : Router) { }
 
   ngOnInit(): void 
   {
@@ -35,10 +44,11 @@ export class UserprofileComponent implements OnInit {
 
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
     this.currRole = this.currRole.replace(/"/g, '');
-
+   
     $("#profilecard").show();
     $("#profileform").hide();
     this.getProfileDetails(this.loggedUser);
+    this.loadProfileImage();
   }
 
   editProfile()
@@ -46,12 +56,14 @@ export class UserprofileComponent implements OnInit {
     $("#profilecard").hide();
     $("#profileform").show();
     this.getProfileDetails(this.user.email);
+    console.log(this.user);
   }
 
   getProfileDetails(loggedUser : string)
   {
     this.profileDetails = this._service.getProfileDetails(this.loggedUser);
     console.log(this.profileDetails);
+    console.log(this.user);
 
     
     // this._service.getProfileDetails(loggedUser).subscribe(
@@ -94,4 +106,117 @@ export class UserprofileComponent implements OnInit {
   }
 
 
+
+
+
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
+  onSubmit(email: string): void {
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+      console.log(this.user.email);
+      this._service.postimage(email, formData).subscribe(
+        data => {
+          alert("Profile image uploaded successfully")
+          console.log(email);
+          console.log("Profile image uploaded successfully");
+          this.msg = "Profile Updated Successfully !!!";
+          $(".editbtn").hide();
+          $("#message").show();
+          this.temp = true;
+          $("#profilecard").show();
+          $("#profileform").hide();
+          setTimeout(() => {
+            this._router.navigate(['/userdashboard']);
+          }, 6000);
+        },
+        error => {
+          alert("Profile image uploaded successfully")
+          console.log("emailid"+this.user.email);
+          console.log("Profile image upload failed");
+          console.log(error.error);
+          this.msg = "Profile Image Upload Failed !!!";
+        }
+      );
+    }
+  }
+
+  //--------------------------------------------------------------------------------------------
+  loadProfileImage(): void {
+    const userEmail = this.loggedUser;
+    this.http.get(`http://localhost:8080/profile/getprofile/${userEmail}`, { responseType: 'blob' })
+      .subscribe(
+        response => this.createImageFromBlob(response),
+        error => {
+          console.error('Error fetching image:', error);
+        }
+      );
+  }
+
+  createImageFromBlob(image: Blob): void {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+       this.imageData = reader.result as string;
+    }, false);
+
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+  }
 }
+//----------------------------------------------------------------------------------------
+  // loadProfileImage(): void {
+  //   const userEmail = this.loggedUser; // Set the user email here
+  //   this.http.get<string>(`http://localhost:8080/profile/getprofile/${userEmail}`, { responseType: 'text' as 'json' })
+  //     .subscribe(
+  //       data => {
+  //         this.imageData = data;
+  //       },
+  //       error => {
+  //         console.error('Error fetching image:', error);
+  //       }
+  //     );
+  //    }
+   //------------------------------------------------------------------------------------ 
+
+//   getImage(email:string): void {
+//     this._service.getImageData(email).subscribe(
+//       (data) => {
+//         this.profileDetails = data;
+//         // Extract profile image URL
+//         this.profileImageURL = data.profileImage.imageData; // Assuming 'profileImage' contains the image data
+//       },
+//       (error) => {
+//         console.error('Error fetching profile details:', error);
+//       }
+//     );
+//   }
+// }
+
+//---------------------------------------------------------------------------------------------
+//     this._service.getImageData(email).subscribe(
+//       data => {
+//         this.imageData = this.createImageFromBlob(data);
+//       },
+//       error => {
+//         console.log('Error fetching image:', error);
+//       }
+//     );
+//   }
+
+//   createImageFromBlob(image: Blob) {
+//     let reader = new FileReader();
+//     reader.readAsDataURL(image);
+//     reader.onloadend = () => {
+//       return reader.result as string;
+//     }
+//   }
+// }
+

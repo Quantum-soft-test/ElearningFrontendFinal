@@ -11,7 +11,6 @@ const NAV_URL = environment.apiURL;
 })
 export class PasswordResetService {
   
-  private resetPasswordUrl = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +19,12 @@ export class PasswordResetService {
    console.log(`${NAV_URL}/resetpassword/`+email+'/'+newPassword);
     return this.http.post<any>(`${NAV_URL}/resetpassword/`+email+'/'+newPassword,null);
   }
+
+  resetProfPassword(email: string, newPassword: string): Observable<any> {
+    //return this.http.post<any>(this.resetPasswordUrl+'/resetpassword', { email, newPassword });
+    console.log(`${NAV_URL}/resetProfessorpassword/`+email+'/'+newPassword);
+     return this.http.post<any>(`${NAV_URL}/resetProfessorpassword/`+email+'/'+newPassword,null);
+   }
 }
 
 

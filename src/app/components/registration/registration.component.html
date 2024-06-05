@@ -2,6 +2,11 @@
 
     <div class="row">
         <div class="col-md-9 register-right">
+
+            <button type="button" class="close-btn" aria-label="Close" onclick="window.location.href = '/'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link nav1" id="home-tab" data-toggle="tab" data-target="#home" role="tab" aria-controls="home" aria-selected="true">User</a>
@@ -18,34 +23,51 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="user name *" name="username" [(ngModel)]="user.username" required 
-                                #username="ngModel"
-                                [class.is-invalid]="username.invalid && username.touched">
-                                <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>required field</b></small>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="user name *" 
+                                    name="username" 
+                                    [(ngModel)]="user.username" 
+                                    (ngModelChange)="capitalizeFirstLetter()" 
+                                    required 
+                                    #username="ngModel"
+                                    [class.is-invalid]="username.invalid && username.touched">
+                                <small 
+                                    class="text-danger" 
+                                    [class.d-none]="username.valid || username.untouched">
+                                    <b>required field</b>
+                                </small>
                             </div>
+                            
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="gender *" name="usergender" [(ngModel)]="user.gender" required 
-                                #usergender="ngModel"
-                                [class.is-invalid]="usergender.invalid && usergender.touched">
-                                <small class="text-danger" [class.d-none]="usergender.valid || usergender.untouched"><b>required field</b></small>
+                                <select 
+                                    class="form-control" 
+                                    name="usergender" 
+                                    [(ngModel)]="user.gender" 
+                                    required 
+                                    #usergender="ngModel"
+                                    [class.is-invalid]="usergender.invalid && usergender.touched" required>
+                                    <option value="" disabled selected>Select gender *</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <small 
+                                    class="text-danger" 
+                                    [class.d-none]="usergender.valid || usergender.untouched">
+                                    <b>required field</b>
+                                </small>
                             </div>
+                            
+
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="your profession *" name="userprofession" [(ngModel)]="user.profession" required 
                                 #userprofession="ngModel"
                                 [class.is-invalid]="userprofession.invalid && userprofession.touched">
                                 <small class="text-danger" [class.d-none]="userprofession.valid || userprofession.untouched"><b>required field</b></small>
                             </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password *" name="pwd" [(ngModel)]="user.password" required 
-                                #userpassword="ngModel"
-                                [class.is-invalid]="userpassword.invalid && userpassword.touched">
-                                <div *ngIf="userpassword.errors && userpassword.invalid && userpassword.touched">
-                                  <small class="text-danger" *ngIf="userpassword.errors.required"><b>required field</b></small>
-                                </div>
-                                <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+
+
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="email address *" name="useremail" [(ngModel)]="user.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
                                 #useremail="ngModel"
@@ -55,6 +77,11 @@
                                     <small class="text-danger" *ngIf="useremail.errors.pattern"><b>Invalid email Id</b></small>
                                   </div>
                             </div>
+
+                           
+                        </div>
+                        <div class="col-md-6">
+                           
                             <div class="form-group">
                                 <input type="tel" maxlength="10" minlength="10" class="form-control" placeholder="mobile *" name="usermobile" [(ngModel)]="user.mobile" required 
                                 #usermobile="ngModel"
@@ -67,6 +94,17 @@
                                 [class.is-invalid]="useraddress.invalid && useraddress.touched">
                                 <small class="text-danger" [class.d-none]="useraddress.valid || useraddress.untouched"><b>required field</b></small>
                             </div>
+
+                             
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password *" name="pwd" [(ngModel)]="user.password" required 
+                                #userpassword="ngModel"
+                                [class.is-invalid]="userpassword.invalid && userpassword.touched">
+                                <div *ngIf="userpassword.errors && userpassword.invalid && userpassword.touched">
+                                  <small class="text-danger" *ngIf="userpassword.errors.required"><b>required field</b></small>
+                                </div>
+                               
+                            </div>
                             <div class="form-group">
                                 <input type="password" class="form-control"  placeholder="Confirm Password *" name="ConfirmPassword" (ngModel)="user.password" required 
                                 #userconfirmPassword="ngModel"
@@ -76,12 +114,13 @@
                                 </div>-->
                                 <small class="text-danger" [class.d-none]="(userconfirmPassword.value == userpassword.value) || userconfirmPassword.untouched"><b>password not matched</b></small>
                             </div>
+                            <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
                         </div>
                     </div>
                     <div class="checkbox" style="margin-top: -8%; margin-left: 11%;">
                         
                         <small style="color: gray;"><input type="checkbox"[(ngModel)]="termsAndConditionsChecked" class="checkbox" name="remember" required> I agree to all?
-                            <small [routerLink]="['/login']" style="color: navy; text-align: center; cursor: pointer;"><b>terms and Conditions</b></small>
+                            <small [routerLink]="['/termcondition']" style="color: navy; text-align: center; cursor: pointer;"><b>terms and Conditions</b></small>
                         </small>
                     </div>
                     <div style="margin-top: -3%; margin-left: 58.5%; margin-bottom: 3%; color: rgb(0, 0, 0); font-size: 16px;">Already have an Account? 
@@ -96,12 +135,15 @@
                     <form #professorform="ngForm" (ngSubmit)="registerProfessor()">
                     <div class="row register-form">
                         <div class="col-md-6">
+
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Professor Name *" name="professorname" [(ngModel)]="professor.professorname" required 
                                 #professorname="ngModel"
                                 [class.is-invalid]="professorname.invalid && professorname.touched">
                                <small class="text-danger" [class.d-none]="professorname.valid || professorname.untouched"><b>required field</b></small>
                             </div>
+
+                            
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="email address *" name="professoremail" [(ngModel)]="professor.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
                                 #professoremail="ngModel"
@@ -111,27 +153,35 @@
                                     <small class="text-danger" *ngIf="professoremail.errors.pattern"><b>Invalid email Id</b></small>
                                   </div>                          
                             </div>
+
+
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="gender *" name="professorgender" [(ngModel)]="professor.gender" required 
-                                #professorgender="ngModel"
-                                [class.is-invalid]="professorgender.invalid && professorgender.touched">
-                                <small class="text-danger" [class.d-none]="professorgender.valid || professorgender.untouched"><b>required field</b></small>
-                            </div>
+                                <select 
+                                class="form-control" 
+                                name="usergender" 
+                                [(ngModel)]="user.gender" 
+                                required 
+                                #usergender="ngModel"
+                                [class.is-invalid]="usergender.invalid && usergender.touched" required>
+                                <option value="" disabled selected>Select gender *</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>                            </div>
                             <div class="form-group">
                                 <input type="tel" maxlength="10" minlength="10" class="form-control" placeholder="mobile *" name="professormobile" [(ngModel)]="professor.mobile" required 
                                 #professormobile="ngModel"
                                 [class.is-invalid]="professormobile.invalid && professormobile.touched">
                                <small class="text-danger" [class.d-none]="professormobile.valid || professormobile.untouched"><b>required field</b></small>
                             </div>
+
+
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="password *" name="pwd" [(ngModel)]="professor.password" required 
-                                #professorpassword="ngModel"
-                                [class.is-invalid]="professorpassword.invalid && professorpassword.touched">
-                                <div *ngIf="professorpassword.errors && professorpassword.invalid && professorpassword.touched">
-                                  <small class="text-danger" *ngIf="professorpassword.errors.required"><b>required field</b></small>
-                                </div>
-                                <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
+                                <input type="text" class="form-control" placeholder="Degrees completed *" name="degreecompleted" [(ngModel)]="professor.degreecompleted" required 
+                                #degreecompleted="ngModel"
+                                [class.is-invalid]="degreecompleted.invalid && degreecompleted.touched">
+                               <small class="text-danger" [class.d-none]="degreecompleted.valid || degreecompleted.untouched"><b>required field</b></small>
                             </div>
+                            
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -152,23 +202,31 @@
                                 [class.is-invalid]="experience.invalid && experience.touched">
                                <small class="text-danger" [class.d-none]="experience.valid || experience.untouched"><b>required field</b></small>
                             </div>
+
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Degrees completed *" name="degreecompleted" [(ngModel)]="professor.degreecompleted" required 
-                                #degreecompleted="ngModel"
-                                [class.is-invalid]="degreecompleted.invalid && degreecompleted.touched">
-                               <small class="text-danger" [class.d-none]="degreecompleted.valid || degreecompleted.untouched"><b>required field</b></small>
+                                <input type="password" class="form-control" placeholder="password *" name="pwd" [(ngModel)]="professor.password" required 
+                                #professorpassword="ngModel"
+                                [class.is-invalid]="professorpassword.invalid && professorpassword.touched">
+                                <div *ngIf="professorpassword.errors && professorpassword.invalid && professorpassword.touched">
+                                  <small class="text-danger" *ngIf="professorpassword.errors.required"><b>required field</b></small>
+                                </div>
+                               
                             </div>
+                            
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="confirm password *" name="ConfirmPassword" (ngModel)="professor.password" required 
                                 #professorconfirmPassword="ngModel"
                                 [class.is-invalid]="professorconfirmPassword.invalid && professorconfirmPassword.touched">
                                 <small class="text-danger" [class.d-none]="(professorconfirmPassword.value == professorpassword.value) || professorconfirmPassword.untouched"><b>password not matched</b></small>
                             </div>
+
+                            <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
                         </div>
                     </div>
                     <div class="checkbox" let  style="margin-top: -8%; margin-left: 11%;">
                         <small style="color: gray;"><input type="checkbox" [(ngModel)]="termsAndConditionsChecked" class="checkbox" name="remember" required> I agree to all ?
-                            <small [routerLink]="['/login']" style="color: navy; text-align: center; cursor: pointer;"><b>terms and Conditions</b></small>
+                            <small [routerLink]="['/termcondition
+                            ']" style="color: navy; text-align: center; cursor: pointer;"><b>terms and Conditions</b></small>
                         </small>
                     </div>
                     <div style="margin-top: -3%; margin-left: 58.5%; margin-bottom: 3%; color: rgb(0, 0, 0); font-size: 16px;">Already have an Account? 

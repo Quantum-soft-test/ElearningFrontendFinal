@@ -14,11 +14,17 @@ export class AddcourseComponent implements OnInit {
 
   course = new Course();
   msg = ' ';
+  minDate="";
 
   constructor(private _professorService : ProfessorService, private _router : Router) { }
 
   ngOnInit(): void 
   {
+
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate());
+    this.minDate = tomorrow.toISOString().split('T')[0];
     $("#websitelink, #youtubelink").css("display","none");
     $("#websitelink").hide();
     

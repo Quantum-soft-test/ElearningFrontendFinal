@@ -35,6 +35,8 @@ import { PlacementsComponent } from './components/placements/placements.componen
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ReferEarnComponent } from './components/refer-earn/refer-earn.component';
 import { EventsComponent } from './components/events/events.component';
+import { resetProfessorpasswordComponent } from './components/resetProfessorpassword/resetProfessorpassword.component';
+import { CertificateComponent } from './components/certificate/certificate.component';
 
 
 const routes: Routes = [
@@ -43,7 +45,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'jobs',component:jobsComponent},
   {path:'resetpassword',component:ResetpasswordComponent,pathMatch: 'full' },
-  
+
+  {path:'resetProfpassword',component:resetProfessorpasswordComponent,pathMatch: 'full' },
+
   {path:'aboutus',component:aboutusComponent },
   {path:'review',component:ReviewComponent },
   {path:'termcondition',component:TermConditionComponent },
@@ -51,7 +55,7 @@ const routes: Routes = [
   {path:'referearn',component:ReferEarnComponent },
   {path:'events',component:EventsComponent },
   {path:'privacypolicy',component:PrivacyPolicyComponent },
-  
+  {path:'certificate',component:CertificateComponent },
 
 
 

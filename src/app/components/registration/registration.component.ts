@@ -13,6 +13,7 @@ import { RegistrationService } from 'src/app/services/registration.service';
 })
 export class RegistrationComponent implements OnInit {
 
+
   user = new User();
   professor = new Professor();
   msg = ' ';
@@ -21,6 +22,12 @@ export class RegistrationComponent implements OnInit {
   userRegistrationAlertShown = false;
   professorRegistrationAlertShown = false;
   isuseremailVal=false;
+
+
+  user1 = { username: '' };
+
+
+ 
 
   constructor(private _registrationService : RegistrationService, private _professorService : ProfessorService, private _router : Router) { }
 
@@ -262,5 +269,18 @@ export class RegistrationComponent implements OnInit {
         );
         console.log('User registered successfully!');
       }
+}
+
+
+capitalizeFirstLetter() {
+  if (this.user.username) {
+    this.user.username = this.user.username.charAt(0).toUpperCase() + this.user.username.slice(1);
+  }
+}
+
+capitalizeFirstLetter1() {
+  if (this.professor.professorname) {
+    this.professor.professorname = this.professor.professorname.charAt(0).toUpperCase() + this.professor.professorname.slice(1);
+  }
 }
 }

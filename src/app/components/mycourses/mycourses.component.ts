@@ -53,7 +53,7 @@ export class MycoursesComponent implements OnInit {
   }
   
    owlOptions: OwlOptions = {
-     loop: true,
+     loop: false,
      mouseDrag: true,
      touchDrag: true,
      margin: 50,

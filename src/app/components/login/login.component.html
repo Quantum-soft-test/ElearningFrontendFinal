@@ -4,6 +4,13 @@
       <button class="headbtn1" id="userbtn">user</button>
       <button class="headbtn2" id="professorbtn">Professor</button>
       <button class="headbtn3" id="adminbtn">admin</button>
+
+
+      <button type="button" class="close-btn" aria-label="Close" onclick="window.location.href = '/'">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    
     <div class="user-login-form">
      <h1 class="textual">User Login</h1>
       <form #userloginform="ngForm" (ngSubmit)="loginUser()">
@@ -84,7 +91,7 @@
        
              <div class="checkbox" style="margin-top: 5px;">
                <small style="color: gray;"><input type="checkbox" name="remember"> Remember me</small>
-               <small [routerLink]="['/resetpassword']"style="color: navy; margin-left: 35%; cursor: pointer;">forgot password?</small>
+               <small [routerLink]="['/resetProfpassword']"style="color: navy; margin-left: 35%; cursor: pointer;">forgot password?</small>
              </div>
              <button [disabled]="professorloginform.form.invalid" type="submit" class="btn loginbtn">Login</button>
            </form>

@@ -1,0 +1,60 @@
+.certificate {
+    font-family: 'Arial', sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.certificate h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.certificate p {
+    margin-bottom: 10px;
+}
+
+.participant-name,
+.course-name,
+.completion-date {
+    font-weight: bold;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+.company-logo {
+    width: 150px; /* Adjust size as needed */
+    margin-bottom: 20px; /* Adjust spacing */
+}
+
+.ceo-signature {
+    margin-top: 30px; /* Adjust spacing */
+    display: flex;
+    align-items: center;
+}
+
+.ceo-signature img {
+    width: 100px; /* Adjust size as needed */
+    margin-right: 20px; /* Adjust spacing between image and text */
+}

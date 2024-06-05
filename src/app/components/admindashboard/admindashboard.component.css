@@ -2,14 +2,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
 
+
 .sidebar-container {
 
     position: relative;
     width: 235px;
     height: 970px;
     left: 0;
+    top: 0;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: 100%;
     background: #1a1a1a;
     color: #fff;
   }
@@ -22,6 +24,7 @@
     margin: 0;
     list-style-type: none;
     position: relative;
+    
   }
   .sidebar-navigation li {
     background-color: transparent;
@@ -45,6 +48,7 @@
     background-color: #c92d2d;
     transform: scale(1.1);
     cursor: pointer;
+    
   }
   
   .sidebar-navigation li .fa {
@@ -79,7 +83,9 @@
     font-size: 12px;
     text-transform: uppercase;
     background-color: #151515;
+    
     padding: 10px 15px 10px 30px;
+    
   }
   
   .sidebar-navigation .header::before {

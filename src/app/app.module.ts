@@ -38,6 +38,8 @@ import { ReviewComponent } from './components/review/review.component';
 import { PlacementsComponent } from './components/placements/placements.component';
 import { ReferEarnComponent } from './components/refer-earn/refer-earn.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { resetProfessorpasswordComponent } from './components/resetProfessorpassword/resetProfessorpassword.component';
+import { CertificateComponent } from './components/certificate/certificate.component';
 
 
 @NgModule({
@@ -76,8 +78,11 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     WelcomepageComponent,
     ResetpasswordComponent,
     jobsComponent,
+    resetProfessorpasswordComponent,
+    CertificateComponent,
   
     aboutusComponent,
+
     
   ],
   

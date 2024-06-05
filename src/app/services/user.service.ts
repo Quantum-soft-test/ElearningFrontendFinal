@@ -90,4 +90,17 @@ export class UserService {
     return this._http.put<any>(`${NAV_URL}/updateuser`,user);
   }
 
+
+  postimage(email:string,FormData:FormData):Observable<any>
+  {
+    // http://localhost:8080/profile/uploadimage/sharda@gmail.com
+    console.log(email);
+    return this._http.post<any>(`${NAV_URL}/profile/uploadimage/${email}`,FormData);
+  }
+
+  getImageData(userEmail: string): Observable<any> {
+    return this._http.get(`${NAV_URL}/profile/getimage/${userEmail}`, { responseType: 'blob' });
+  }
+
+
 }

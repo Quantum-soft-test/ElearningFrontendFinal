@@ -74,7 +74,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-# TECHNOLOGIES USED 📌
+# NPM Install 📌
+
+npm install --save-dev @types/bootstrap
+npm install bootstrap @popperjs/core
+npm install jspdf --save  
+npm install @paypal/checkout-sdk 
+npm install file-saver --save   
+npm install ngx-owl-carousel-o --save  
+npm i bootstrap-icons      
 
 ## Front End 📫
 
@@ -122,4 +130,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-"# E_learning_Quantumsoft" 
+"# E_learning_TechBrilliance" 

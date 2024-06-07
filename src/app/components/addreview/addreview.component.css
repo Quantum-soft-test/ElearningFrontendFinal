@@ -1,0 +1,68 @@
+.review-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-top: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star.filled {
+  color: #ffd700;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #5cb85c;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.review-form .button-group {
+  display: flex;
+  justify-content: space-between; /* Aligns children (buttons) on each end */
+}
+
+.clear-form {
+  align-self: flex-end; /* Aligns the clear button to the right */
+}
+

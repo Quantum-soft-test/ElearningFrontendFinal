@@ -56,6 +56,13 @@
        </a>
        <span class="tooltip">Users</span>
      </li>
+     <li [routerLink]="['/addreview']">
+      <a>
+        <i class='fa fa-envelope' ></i>
+        <span class="links_name">Add Review</span>
+      </a>
+      <span class="tooltip">Add Review</span>
+    </li>
      <li style="align-content: center;" class="profile">
          <div class="profile-details">
            <div class="name_job">
@@ -81,7 +88,7 @@
           </div>
           <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
             <div class="circle"><i id="icons" style="margin-left: 15px;" class="fa fa-graduation-cap"></i></div>
-            <div class="text" style="font-family: 'aladin'; letter-spacing: 1px; font-size: 35px; font-weight: bolder; color: rgb(5, 44, 42);">Leaners</div>
+            <div class="text" style="font-family: 'aladin'; letter-spacing: 1px; font-size: 35px; font-weight: bolder; color: rgb(5, 44, 42);">Learners</div>
             <div class="sub-text" *ngFor="let count of enrollmentcount | async">{{count}} enrollments have been <br>made by <b *ngFor="let enrollment of enrollments | async">{{enrollment}}</b> Learners</div>
           </div>
           <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
@@ -92,8 +99,8 @@
           <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
             <div class="circle"><i id="icons" style="margin-left: 20px;" class="fa fa-heart"></i></div>
             <div class="text" style="font-family: 'aladin'; letter-spacing: 1px; font-size: 35px; font-weight: bolder; color: rgb(5, 44, 42);">Favourites</div>
-            <div class="sub-text" *ngFor="let wishlists of wishlist | async"[routerLink]="['/mywishlist']">{{wishlists}} courses are loved by <br>most of the Leaners </div>
-            <div class="sub-text" *ngFor="let wishlists of wishlist | async"[routerLink]="['/mywishlist']">{{wishlists}} courses are loved by <br>most of the Leaners </div>
+            <div class="sub-text" *ngFor="let wishlists of wishlist | async"[routerLink]="['/mywishlist']">{{wishlists}} courses are loved by <br>most of the Learners </div>
+            <div class="sub-text" *ngFor="let wishlists of wishlist | async"[routerLink]="['/mywishlist']">{{wishlists}} courses are loved by <br>most of the Learners </div>
           </div>      
       </div>
     </div>

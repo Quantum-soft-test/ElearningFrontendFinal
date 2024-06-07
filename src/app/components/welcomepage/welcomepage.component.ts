@@ -23,7 +23,7 @@ export class WelcomepageComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.setupToggleSections();
+   
     this.showSlide(this.slideIndex);
     this.startAutoSlide();
 
@@ -62,15 +62,7 @@ export class WelcomepageComponent implements OnInit {
         $('#innertext3').slideUp(300);
       }
     });
-    // $("#subtext5").click(function () {
-    //   $("#innertext5").slideToggle(300);
-    //   if ($('#innertext1').is(':visible') || $('#innertext2').is(':visible') || $('#innertext3').is(':visible') || $('#innertext4').is(':visible')) {
-    //     $('#innertext1').slideUp(300);
-    //     $('#innertext2').slideUp(300);
-    //     $('#innertext3').slideUp(300);
-    //     $('#innertext4').slideUp(300);
-    //   }
-    // });
+    
   }
 
   
@@ -87,19 +79,6 @@ export class WelcomepageComponent implements OnInit {
     this.automationImageSrc = newImageUrl;
   }
 
-  setupToggleSections() {
-    const sections = ['#subtext1', '#subtext2', '#subtext3', '#subtext4', '#subtext5'];
-    sections.forEach((section, index) => {
-      $(section).click(() => {
-        $(`#innertext${index + 1}`).slideToggle(300);
-        sections.forEach((otherSection, otherIndex) => {
-          if (otherIndex !== index && $(`#innertext${otherIndex + 1}`).is(':visible')) {
-            $(`#innertext${otherIndex + 1}`).slideUp(300);
-          }
-        });
-      });
-    });
-  }
 
   showSlide(index: number) {
     const slides = document.querySelectorAll('.slide');

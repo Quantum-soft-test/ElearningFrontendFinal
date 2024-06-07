@@ -30,9 +30,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Professor Gender : <b style="color:red;">*</b></label>
-                                <input type="text" class="form-control" placeholder="please mention gender" name="professorgender" [(ngModel)]="professor.gender" required 
-                                #professorgender="ngModel"
-                                [class.is-invalid]="professorgender.invalid && professorgender.touched">
+                                <select class="form-control" name="professorgender" [(ngModel)]="professor.gender" required 
+                                        #professorgender="ngModel"
+                                        [class.is-invalid]="professorgender.invalid && professorgender.touched">
+                                    <option value="" disabled selected>Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
                                 <small class="text-danger" [class.d-none]="professorgender.valid || professorgender.untouched"><b>required field</b></small>
                             </div>
                             <div class="form-group">
@@ -43,25 +47,18 @@
                                <small class="text-danger" [class.d-none]="professormobile.valid || professormobile.untouched"><b>required field</b></small>
                             </div>
                             <div class="form-group">
-                                <label>Password : <b style="color:red;">*</b></label>
-                                <input type="password" class="form-control" placeholder="enter password" name="pwd" [(ngModel)]="professor.password" required 
-                                #professorpassword="ngModel"
-                                [class.is-invalid]="professorpassword.invalid && professorpassword.touched">
-                                <div *ngIf="professorpassword.errors && professorpassword.invalid && professorpassword.touched">
-                                  <small class="text-danger" *ngIf="professorpassword.errors.required"><b>required field</b></small>
-                                </div>
-                                <small style="color: navy; font-size: 10px; font-weight: bold;">Please use the temporary password as "123"</small>
-                                <small style="color: gray; font-size: 10px; font-weight: bold;"> Later Professor can Login and edit his/her password</small>
+                                <label>Completed Degrees : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="completed degrees (seperated by , )" name="degreecompleted" [(ngModel)]="professor.degreecompleted" required 
+                                #degreecompleted="ngModel"
+                                [class.is-invalid]="degreecompleted.invalid && degreecompleted.touched">
+                               <small class="text-danger" [class.d-none]="degreecompleted.valid || degreecompleted.untouched"><b>required field</b></small>
+                               <small style="color: gray;">Eg: M.E Phd, M.E MPhil, B.E, Dr, etc...</small>
                             </div>
+                            
+                            
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Working Institution Name : <b style="color:red;">*</b></label>
-                                <input type="text" class="form-control" placeholder="enter institution name" name="institutionname" [(ngModel)]="professor.institutionname" required 
-                                #institutionname="ngModel"
-                                [class.is-invalid]="institutionname.invalid && institutionname.touched">
-                               <small class="text-danger" [class.d-none]="institutionname.valid || institutionname.untouched"><b>required field</b></small>
-                            </div>
+                           
                             <div class="form-group">
                                 <label>Working Department : <b style="color:red;">*</b></label>
                                 <input type="text" class="form-control" placeholder="enter department" name="department" [(ngModel)]="professor.department" required 
@@ -77,20 +74,40 @@
                                <small class="text-danger" [class.d-none]="experience.valid || experience.untouched"><b>required field</b></small>
                             </div>
                             <div class="form-group">
-                                <label>Completed Degrees : <b style="color:red;">*</b></label>
-                                <input type="text" class="form-control" placeholder="completed degrees (seperated by , )" name="degreecompleted" [(ngModel)]="professor.degreecompleted" required 
-                                #degreecompleted="ngModel"
-                                [class.is-invalid]="degreecompleted.invalid && degreecompleted.touched">
-                               <small class="text-danger" [class.d-none]="degreecompleted.valid || degreecompleted.untouched"><b>required field</b></small>
-                               <br><small style="color: gray;">Eg: M.E Phd, M.E MPhil, B.E, Dr, etc...</small>
+                                <label>Working Institution Name : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter institution name" name="institutionname" [(ngModel)]="professor.institutionname" required 
+                                #institutionname="ngModel"
+                                [class.is-invalid]="institutionname.invalid && institutionname.touched">
+                               <small class="text-danger" [class.d-none]="institutionname.valid || institutionname.untouched"><b>required field</b></small>
                             </div>
+
+                            <div class="form-group">
+                                <label>Password : <b style="color:red;">*</b></label>
+                                <input type="password" class="form-control" placeholder="enter password" name="pwd" [(ngModel)]="professor.password" required 
+                                #professorpassword="ngModel"
+                                [class.is-invalid]="professorpassword.invalid && professorpassword.touched">
+                                <div *ngIf="professorpassword.errors && professorpassword.invalid && professorpassword.touched">
+                                  <small class="text-danger" *ngIf="professorpassword.errors.required"><b>required field</b></small>
+                                </div>
+                                <br><small style="color: navy; font-size: 10px; font-weight: bold;">Please use the temporary password as "123"</small>
+                                <small style="color: gray; font-size: 10px; font-weight: bold;"> Later Professor can Login and edit his/her password</small>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="checkbox" style="margin-top: -8%; margin-left: 11%; margin-bottom: 4%;">
-                        <small style="color: gray;"><input type="checkbox" class="checkbox" name="remember" required> Is he/she a certified professor <b style="color: red;">(low experienced professors can't give standard content to learners)</b></small>
+                        <small style="color: gray;">
+                            <input type="checkbox" class="checkbox" name="certified" [(ngModel)]="professor.certified"> 
+                            Is he/she a certified professor 
+                            <b style="color: red;">(low experienced professors can't give standard content to learners)</b>
+                        </small>
+                        <small class="text-danger" *ngIf="!professor.certified"><br><br><b>Please click the checkbox to confirm</b></small>
                     </div>
-                    <button [disabled]="professorform.form.invalid" type="submit" class="btnRegister"><i class="fa fa-plus"></i> Add Professor</button>
-                </form>
+                
+                    <button [disabled]="!professor.certified" type="submit" class="btnRegister">
+                        <i class="fa fa-plus"></i> Add Professor
+                    </button>                </form>
                 </div>
             </div>
         </div>

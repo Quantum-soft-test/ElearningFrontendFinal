@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Professor } from 'src/app/models/professor';
 import { User } from 'src/app/models/user';
 import { AdminService } from 'src/app/services/admin.service';
 import { ProfessorService } from 'src/app/services/professor.service';
-import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
 
@@ -17,6 +17,7 @@ export class AddprofessorComponent implements OnInit {
   user = new User();
   professor = new Professor();
   msg = ' ';
+  certified=false;
   
   constructor(private _Service : AdminService, private _professorService : ProfessorService, private _router : Router) { }
 
@@ -41,6 +42,13 @@ export class AddprofessorComponent implements OnInit {
   
   {
 
+  }
+  onSubmit(form: NgForm) {
+    if (this.professor.certified) {
+      this.addProfessor();
+    } else {
+      window.alert('Please click the checkbox to confirm.');
+    }
   }
 
 }

@@ -99,13 +99,44 @@
                                 </div>
 
 
-                                <form (ngSubmit)="onSubmit(user.email)"  #uploadForm="ngForm" enctype="multipart/form-data">
+                                <!-- <form (ngSubmit)="onSubmit(user.email)"  #uploadForm="ngForm" enctype="multipart/form-data">
                                     <div>
                                       <label for="file">Upload Image:</label>
                                       <input type="file" id="file" (change)="onFileSelected($event)" required>
                                     </div>
-                                    <button type="submit" [disabled]="!selectedFile">Submit</button>
-                                  </form>
+                                    <button type="submit primary" [disabled]="!selectedFile">Submit</button>
+                                  </form> -->
+
+                                  <!-- <body>
+                                    <div class="container">
+                                        <form (ngSubmit)="onSubmit(user.email)" #uploadForm="ngForm" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label for="file">Upload Image:</label>
+                                                <input type="file" id="file" (change)="onFileSelected($event)" required>
+                                            </div>
+                                            <button type="submit" [disabled]="!selectedFile">upload Image</button>
+                                        </form>
+                                    </div>
+                                </body> -->
+                                <body>
+                                    <div class="container">
+                                        <form (ngSubmit)="onSubmit(user.email)" #uploadForm="ngForm" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label for="file" class="upload-label">
+                                                    <input type="file" id="file" (change)="onFileSelected($event)" required>
+                                                    <span>Select Image</span>
+                                                </label>
+                                                <button type="submit" [disabled]="!selectedFile" class="link-button">Upload Image</button>
+                                            </div>
+                                                <div *ngIf="selectedFileName" class="file-name">
+                                                    {{ selectedFileName }}
+                                                </div>
+                                            
+                                            <!-- <button type="submit" [disabled]="!selectedFile">Upload Image</button> -->
+
+                                        </form>
+                                    </div>
+                                </body>
 
 
 

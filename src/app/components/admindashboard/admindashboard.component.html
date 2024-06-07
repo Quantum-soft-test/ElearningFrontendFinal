@@ -63,7 +63,7 @@
         </div>
         <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
           <div class="circle"><i id="icons" style="margin-left: 15px;" class="fa fa-graduation-cap"></i></div>
-          <div class="text">Leaners</div>
+          <div class="text">Learners</div>
           <div class="sub-text" *ngFor="let count of enrollmentcount | async">{{count}} enrollments have been made by <b *ngFor="let enrollment of enrollments | async">{{enrollment}}</b> Learners</div>
         </div>
         <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
@@ -74,7 +74,7 @@
         <div class="dashboard-card" style="background-color: white; box-shadow: 4px 4px 25px 5px gray;">
           <div class="circle"><i id="icons" style="margin-left: 20px;" class="fa fa-heart"></i></div>
           <div class="text">Favourites</div>
-          <div class="sub-text" *ngFor="let wishlists of wishlist | async">{{wishlists}} courses are loved by most of the Leaners </div>
+          <div class="sub-text" *ngFor="let wishlists of wishlist | async">{{wishlists}} courses are loved by most of the Learners </div>
         </div>      
     </div>
   </div>

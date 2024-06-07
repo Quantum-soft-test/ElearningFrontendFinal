@@ -1,18 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReferAndEarnComponent } from './refer-and-earn.component';
+import { AddreviewComponent } from './addreview.component';
 
-describe('ReferAndEarnComponent', () => {
-  let component: ReferAndEarnComponent;
-  let fixture: ComponentFixture<ReferAndEarnComponent>;
+describe('AddreviewComponent', () => {
+  let component: AddreviewComponent;
+  let fixture: ComponentFixture<AddreviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReferAndEarnComponent]
+      declarations: [ AddreviewComponent ]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(ReferAndEarnComponent);
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AddreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

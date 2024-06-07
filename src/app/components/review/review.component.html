@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 
 <html lang="en">
@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Course Review</title>
-<!-- <link rel="stylesheet" href="styles.css"> -->
+
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 
   <div class="review">
     <div class="review-header">
-        <!-- <img src="assets/img/download.jpeg" alt="photo"> -->
+      
       <h2 class="review-title">Introduction to Programming</h2>
       <p class="review-author">Monali Gawarguru</p>
     </div>
@@ -63,7 +63,7 @@
 
   <div class="review">
     <div class="review-header">
-        <!-- <img src="assets/img/download.jpeg" alt="photo"> -->
+      
       <h2 class="review-title">"Convenient and very helpful"</h2>
       <p class="review-author">Nikhil Ade</p>
     </div>
@@ -83,7 +83,7 @@
   </div>
   <div class="review">
     <div class="review-header">
-        <!-- <img src="assets/img/download.jpeg" alt="photo"> -->
+     
       <h2 class="review-title">
         I really enjoyed taking your course</h2>
       <p class="review-author">Damini Gurjar</p>
@@ -107,7 +107,7 @@
 
   <div class="review">
     <div class="review-header">
-     <!-- <img src="assets/img/download.jpeg" alt="photo">  -->
+     
       <h2 class="review-title">Nice learner features. Highly recommended for any organization</h2>
       <p class="review-author">Prasad Walujkar</p>
     </div>
@@ -131,7 +131,7 @@
 
   <div class="review">
     <div class="review-header">
-        <!-- <img src="assets/img/download.jpeg" alt="photo"> -->
+
     
       <h2 class="review-title">Captivate Prime.. Good for learners and mobile workforce..</h2>
       <p class="review-author">Bharat Chavhan</p>
@@ -157,4 +157,25 @@
 </html>
 
 
+ -->
 
+
+
+ <div class="review">
+  <div class="review-header">
+  <h2>User Reviews</h2>
+  </div>
+  <div *ngFor="let review of reviews" class="review-body">
+    <div class="review-name">
+    <h3>{{ review.name }}</h3>
+  </div>
+  
+    <p>{{ review.reviewtext }}</p>
+
+    <div class="review-footer">
+      <h5 class="black-text">Rating:</h5>
+      <p> {{ review.ratings | rating }}</p>
+  </div>
+  </div>
+  <button [routerLink]="['/login']" type="button" class="btn btn-primary btn-lg">Add Review</button>
+</div>

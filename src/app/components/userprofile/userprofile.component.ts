@@ -29,6 +29,8 @@ export class UserprofileComponent implements OnInit {
    profileImage$: Observable<Blob> | undefined;
    email = this.user.email;
    imageData: string = '';
+   selectedFileName: string | null = null;
+
  
   editingProfile: boolean = false; // Initialize editingProfile flag
    
@@ -65,21 +67,6 @@ export class UserprofileComponent implements OnInit {
     console.log(this.profileDetails);
     console.log(this.user);
 
-    
-    // this._service.getProfileDetails(loggedUser).subscribe(
-    //   (data: any) => {
-    //     this.profileDetails = data; // Assign fetched profile details to profileDetails variable
-    //   },
-    //   (error: any) => {
-    //     console.error('Error fetching profile details:', error);
-    //   }
-    // );
-
-
-    // this._service.getProfileDetails(loggedUser).subscribe((data: any) => {
-    //   this.user = data; // Assign fetched user data to the user object
-    //   console.log(this.user); // Check the fetched user data in console
-    // });
   }
 
   updateUserProfile()
@@ -110,10 +97,20 @@ export class UserprofileComponent implements OnInit {
 
 
 
+  // onFileSelected(event: Event): void {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.files && input.files.length > 0) {
+  //     this.selectedFile = input.files[0];
+  //   }
+  // }
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
+      this.selectedFileName = this.selectedFile.name;
+    } else {
+      this.selectedFile = null;
+      this.selectedFileName = null;
     }
   }
 

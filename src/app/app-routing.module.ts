@@ -29,7 +29,6 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 import { jobsComponent } from './components/jobs/jobs.component';
 
 import { aboutusComponent } from './components/aboutus/aboutus.component';
-import { ReviewComponent } from './components/review/review.component';
 import { TermConditionComponent } from './components/term-condition/term-condition.component';
 import { PlacementsComponent } from './components/placements/placements.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
@@ -37,6 +36,8 @@ import { ReferEarnComponent } from './components/refer-earn/refer-earn.component
 import { EventsComponent } from './components/events/events.component';
 import { resetProfessorpasswordComponent } from './components/resetProfessorpassword/resetProfessorpassword.component';
 import { CertificateComponent } from './components/certificate/certificate.component';
+import { ReviewComponent } from './components/review/review.component';
+import { AddreviewComponent } from './components/addreview/addreview.component';
 
 
 const routes: Routes = [
@@ -49,13 +50,15 @@ const routes: Routes = [
   {path:'resetProfpassword',component:resetProfessorpasswordComponent,pathMatch: 'full' },
 
   {path:'aboutus',component:aboutusComponent },
-  {path:'review',component:ReviewComponent },
+  {path:'review',component:ReviewComponent},
   {path:'termcondition',component:TermConditionComponent },
   {path:'placements',component:PlacementsComponent },
   {path:'referearn',component:ReferEarnComponent },
   {path:'events',component:EventsComponent },
   {path:'privacypolicy',component:PrivacyPolicyComponent },
   {path:'certificate',component:CertificateComponent },
+  {path:'addreview',component:AddreviewComponent },
+  {path:'review',component:ReviewComponent },
 
 
 

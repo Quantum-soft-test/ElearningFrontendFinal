@@ -12,6 +12,7 @@ export class Professor
     mobile : string = '';
     password : string = '';
     status : string = 'false';
+  certified: any;
 
     constructor() {}
     

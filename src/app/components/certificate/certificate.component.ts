@@ -26,37 +26,72 @@ export class CertificateComponent implements OnInit {
   // participantName: string = 'John Doe';
   courseName: string = 'Angular Basics';
  
-  generateCertificate(): void {
+  // generateCertificate(): void {
    
 
 
-    const doc = new jsPDF();
-    console.log("logged",this.loggedUser.split("@"));
-    this.user= this.loggedUser.split("@")[0];
+  //   const doc = new jsPDF();
+  //   console.log("logged",this.loggedUser.split("@"));
+  //   this.user= this.loggedUser.split("@")[0];
     
 
-    const logo = new Image();
-    logo.src = 'assets/img/logo1.jpeg'; // Path to your company logo image
-    doc.addImage(logo, 'PNG', 10, 10, 50, 20);
+  //   const logo = new Image();
+  //   logo.src = 'assets/img/logo1.jpeg'; // Path to your company logo image
+  //   doc.addImage(logo, 'PNG', 10, 10, 50, 20);
 
-    const certificateContent = `
-    \n\n\n\n\nCertificate of Completion\n\n
-    This is to certify that ${this.user} has successfully completed the course \n on ${this.courseName}.\n\n
-    Date: ${this.today}
-  `;
-
-
-
-    const signature = new Image();
-    signature.src = 'assets/img/sign1.jpg'; // Path to CEO signature image
-    doc.addImage(signature, 'PNG', 110, 150, 40, 20); // Adjust position and size as needed
-    doc.text('Nikhileshwar Kshirsagar\nCEO,\n Quantumsoft technologies private limited', 103, 180);
+  //   const certificateContent = `
+  //   \n\n\n\n\nCertificate of Completion\n\n
+  //   This is to certify that ${this.user} has successfully completed the course \n on ${this.courseName}.\n\n
+  //   Date: ${this.today}
+  // `;
 
 
 
-  doc.text(certificateContent, 10, 10);
-    doc.save('certificate.pdf');
-  }
+  //   const signature = new Image();
+  //   signature.src = 'assets/img/sign1.jpg'; // Path to CEO signature image
+  //   doc.addImage(signature, 'PNG', 110, 150, 40, 20); // Adjust position and size as needed
+  //   doc.text('Nikhileshwar Kshirsagar\nCEO,\n Quantumsoft technologies private limited', 103, 180);
+
+
+
+  // doc.text(certificateContent, 10, 10);
+  //   doc.save('certificate.pdf');
+  // }
+
+
+
+generateCertificate(): void {
+   
+
+
+  const doc = new jsPDF();
+  console.log("logged",this.loggedUser.split("@"));
+  this.user= this.loggedUser.split("@")[0];
+  
+
+  const logo = new Image();
+  logo.src = 'assets/img/logo1.jpeg'; // Path to your company logo image
+  doc.addImage(logo, 'PNG', 10, 10, 50, 20);
+
+  const certificateContent = `
+  \n\n\n\n\nCertificate of Completion\n\n
+  This is to certify that ${this.user} has successfully completed the course \n on ${this.courseName}.\n\n
+  Date: ${this.today}
+`;
+
+
+
+  const signature = new Image();
+  signature.src = 'assets/img/sign1.jpg'; // Path to CEO signature image
+  doc.addImage(signature, 'PNG', 110, 150, 40, 20); // Adjust position and size as needed
+  doc.text('Nikhileshwar Kshirsagar\nCEO,\n Quantumsoft technologies private limited', 103, 180);
+
+
+
+doc.text(certificateContent, 10, 10);
+  doc.save('certificate.pdf');
+}
+
 }
 
 

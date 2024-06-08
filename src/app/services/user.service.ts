@@ -35,6 +35,11 @@ export class UserService {
     return this._http.get<any>(`${NAV_URL}/websitecourselist`);
   }
 
+  getGoogleDriveList() : Observable<any>
+  {
+    return this._http.get<any>(`${NAV_URL}/googledrivelist`);
+  }
+
   getCourseListByName(coursename : string) : Observable<any>
   {
     return this._http.get<any>(`${NAV_URL}/courselistbyname/`+coursename);

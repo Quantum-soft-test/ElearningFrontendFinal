@@ -1,7 +1,7 @@
 <app-header> </app-header>
 
 <div id="youtubecoursecard" style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
-  <div class="headtext">Courses with Youtube Videos</div>
+<div class="headtext">Courses with Youtube Videos</div>
 <owl-carousel-o  [options]="owlOptions" (dragging)="owlDragging($event)">
   <ng-container>
     <ng-container *ngFor="let data of youtubecourselist | async">
@@ -32,6 +32,13 @@
 </owl-carousel-o>
 </div>
 
+
+
+
+
+
+
+
 <div id="websitecoursecard" style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
   <div class="headtext">Courses with Website Content</div>
 <owl-carousel-o [options]="owlOptions" (dragging)="owlDragging($event)">
@@ -60,6 +67,38 @@
 </owl-carousel-o>
 </div>
 
+
+
+<div id="Googledrivecoursecard" style="margin-left: 10%; margin-right: 10%; margin-top: 5%;"> <div class="headtext">Courses with Google Drive</div>
+<owl-carousel-o [options]="owlOptions" (dragging)="owlDragging($event)">
+  <ng-container>
+
+    <ng-container *ngFor="let data of googledrivecourselist | async">
+
+      <ng-template carouselSlide class="card" style="width: 18rem;">
+        <div class="card-body" id="Googledrivecard" (click)="getcoursedetails(data.coursename)" style="box-shadow: 2px 2px 15px 8px rgb(147, 158, 147); margin-right: 5%; margin-top: 2%; margin-bottom: 10%; width: 300px; background-color: white;">
+          <img class="card-img-top" [src]="'assets/img/websitebg.png'" [alt]="data.courseid">
+          <hr>
+          <h4 class="card-title text-center" style="margin-bottom: 4%;"><b>{{data.coursename}}</b></h4>
+          <h6 class="text-center" style="margin-left: auto; margin-right: auto; padding: 5px 10px 5px 10px; background-color: darkgoldenrod; border-radius: 5px; font-weight: bold; width: 55%; color: white;">{{data.courseid}}</h6>
+          <div><b style="color: darkred; font-size: large; margin-bottom: 1%;margin-left: 3%">Instructor: </b><b>{{data.instructorname}}</b></div>
+          <div><b style="color: darkred; font-size: large; margin-bottom: 1%;margin-left: 3%">Learners: </b><b>{{data.enrolledcount}} enrolled previously</b></div>
+          <div><b style="color: darkred; font-size: large; margin-bottom: 1%;margin-left: 3%">Level: </b><b>{{data.skilllevel}}</b></div>
+          <div><b style="color: darkred; font-size: large; margin-bottom: 1%;margin-left: 3%">Language: </b><b>{{data.language}}</b></div>
+          <p class="card-text"><br><b style="color: darkblue; font-size: large; margin-bottom: 1%;margin-left: 3%">{{data.description}}</b></p>
+          <!--<a [href]="data.websiteurl" style="margin-right: 8%; margin-left: 4%" class="btn btn-primary">Enroll Now</a>-->
+          <a (click)="getcoursedetails(data.coursename)" style="margin-left: auto; margin-right: auto; border: none;margin-left: 3%;margin-bottom: 3%;" class="btn btn-primary">More Info</a>
+        </div>
+      </ng-template>
+      <!--<ng-template carouselSlide [id]="data.id">
+        <img [src]="data.src" [alt]="data.alt" [title]="data.title">
+      </ng-template>-->
+    </ng-container>
+  </ng-container>
+</owl-carousel-o>
+</div>
+
+
 <div id="coursedetailscard" style="margin-left: 30%; margin-top: 5%;" *ngFor="let data of courselist | async">
   <div class="card-body" style="box-shadow: 2px 2px 15px 8px rgb(147, 158, 147); margin-right: 5%; margin-bottom: 10%; padding-left: 3%; width: 520px; border-radius: 10px; background-color: white;">
     <h4 class="card-title text-center" style="margin-bottom: 4%;"><b style="font-size: 30px;">{{data.coursename}}</b></h4>
@@ -86,10 +125,22 @@
       <a (click)="visitCourse(data.coursename)" style="margin-right: 2%; border: none; margin-bottom: 3%" class="btn btn-primary">Visit Course</a>
       <a id="courselistbtn" (click)="backToCourseList()" style="border: none; margin-right: 2%; margin-bottom: 3%" class="btn btn-primary">Courselist</a>
     </div>
+
+    
     <div *ngIf="data.coursetype === 'Website'" style="margin-top: 0%; margin-left: 10%;">
       <a (click)="gotoURL(data.websiteurl)" style="margin-right: 8%; border: none;margin-bottom: 3%" class="btn btn-primary">Visit Course</a>
       <a id="courselistbtn" (click)="backToCourseList()" style="border: none; margin-right: 2%; margin-bottom: 3%" class="btn btn-primary">Courselist</a>
     </div>
+
+
+
+    <div *ngIf="data.coursetype === 'GoogleDrive'" style="margin-top: 0%; margin-left: 10%;">
+      <a (click)="gotoURL(data.driveurl)" style="margin-right: 8%; border: none;margin-bottom: 3%" class="btn btn-primary">Visit Course</a>
+      <a id="courselistbtn" (click)="backToCourseList()" style="border: none; margin-right: 2%; margin-bottom: 3%" class="btn btn-primary">Courselist</a>
+    </div>
+
+
+
     <div *ngFor="let status of wishliststatus | async">
       <div style="margin-top: -7.5%; margin-left: 76%;margin-bottom: 30%" *ngIf="status === 'notliked'" >
         <a id="wishlistbtn" (click)="addToWishList(data,loggedUser,currRole)" style="border: none; background-color: transparent; outline: none; font-weight: bolder; border: none;"><i class="fa fa-heart-o fa-2x" style="color: red;"></i><b style="font-size: larger;"> Like</b></a>

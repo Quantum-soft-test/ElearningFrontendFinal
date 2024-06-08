@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   professor = new Professor();
   msg = ' ';
   termsAndConditionsChecked: boolean = false;
-
+  selectedFileName: string | null = null;
   userRegistrationAlertShown = false;
   professorRegistrationAlertShown = false;
   isuseremailVal=false;

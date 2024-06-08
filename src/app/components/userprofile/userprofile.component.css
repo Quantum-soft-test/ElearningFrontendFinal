@@ -481,7 +481,13 @@ align-content: center;
 }
 
 
-
+.profile-image {
+  width: 200px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensures the image covers the entire container */
+  border-radius: 50%; /* Make the image circular */
+  margin-top: 10px; /* Adjust the top margin as needed */
+}
 
 .upload-label input[type="file"] {
   display: none;

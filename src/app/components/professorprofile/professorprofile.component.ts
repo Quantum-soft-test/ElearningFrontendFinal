@@ -1,87 +1,81 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Professor } from 'src/app/models/professor';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  
   selector: 'app-professorprofile',
   templateUrl: './professorprofile.component.html',
   styleUrls: ['./professorprofile.component.css']
 })
 export class ProfessorprofileComponent implements OnInit {
- 
-  profileDetails : Observable<Professor[]> | undefined;
-  professor: Professor = new Professor;
-  msg = ' ';
+  profileDetails: Observable<Professor[]> | undefined;
+  professor: Professor = new Professor();
+  msg = '';
   currRole = '';
   loggedUser = '';
   temp = false;
-   selectedFile: File | null = null;
-
+  selectedFile: File | null = null;
   imageData: string = '';
-  editingProfile: boolean = false; 
-  
+  editingProfile: boolean = false;
 
-  constructor(private _service: ProfessorService,private http:HttpClient,private service:UserService, private activatedRoute: ActivatedRoute, private _router : Router) { }
+  constructor(private professorService: ProfessorService, private _http: HttpClient, private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void 
-  {
-    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
-    this.loggedUser = this.loggedUser.replace(/"/g, '');
+  ngOnInit(): void {
+    this.loggedUser = sessionStorage.getItem('loggedUser') || '';
+    this.currRole = sessionStorage.getItem('ROLE') || '';
 
-    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
-    this.currRole = this.currRole.replace(/"/g, '');
-
-    $("#profilecard").show();
-    $("#profileform").hide();
+    this.showProfileCard();
     this.getProfileDetails(this.loggedUser);
     this.loadProfileImage();
   }
 
-  editProfile()
-  {
+  showProfileCard(): void {
+    $("#profilecard").show();
+    $("#profileform").hide();
+  }
+
+  showProfileForm(): void {
     $("#profilecard").hide();
     $("#profileform").show();
+  }
+
+  editProfile(): void {
+    this.showProfileForm();
+    this.professor.email = this.loggedUser;
     this.getProfileDetails(this.professor.email);
   }
 
-  getProfileDetails(loggedUser : string)
-  {
-    this.profileDetails = this._service.getProfileDetails(this.loggedUser);
-    console.log(this.profileDetails);
-  }
-
-  // getUserName(loggedUser : string)
-  // {
-  //   this.
-  
-  updateProfessorProfile()
-  {
-    this._service.UpdateUserProfile(this.professor).subscribe(
-      data => {
-        console.log("Professor Profile Updated succesfully");
-        this.msg = "Profile Updated Successfully !!!";
-        $(".editbtn").hide();
-        $("#message").show();
-        this.temp = true;
-        $("#profilecard").show();
-        $("#profileform").hide();
-        setTimeout(() => {
-            this._router.navigate(['/professordashboard']);
-          }, 6000);
-      },
-      error => {
-        console.log("Profile Updation Failed");
-        console.log(error.error);
-        this.msg = "Profile Updation Failed !!!";
+  getProfileDetails(loggedUser: string): void {
+    this.profileDetails = this.professorService.getProfileDetails(loggedUser);
+    this.profileDetails.subscribe(profiles => {
+      if (profiles.length > 0) {
+        this.professor = profiles[0];
       }
-    )
+    });
   }
 
+  updateProfessorProfile(): void {
+    if (this.professor.email) {
+      this.professorService.UpdateUserProfile(this.professor).subscribe(
+        data => {
+          console.log("Professor Profile Updated successfully");
+          this.msg = "Profile Updated Successfully !!!";
+          this.temp = true;
+          this.showProfileCard();
+          $("#message").show();
+          setTimeout(() => this.router.navigate(['/professordashboard']), 6000);
+        },
+        (        error: any) => {
+          console.error("Profile Update Failed", error);
+          this.msg = "Profile Update Failed !!!";
+        }
+      );
+    }
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -94,37 +88,29 @@ export class ProfessorprofileComponent implements OnInit {
     if (this.selectedFile) {
       const formData = new FormData();
       formData.append('file', this.selectedFile, this.selectedFile.name);
-      console.log(this.professor.email);
-      this.service.postimage(email, formData).subscribe(
-        data => {
-          alert("Profile image uploaded successfully")
-          console.log(email);
+
+      this.userService.postimage(email, formData).subscribe(
+        () => {
+          alert("Profile image uploaded successfully");
           console.log("Profile image uploaded successfully");
           this.msg = "Profile Updated Successfully !!!";
-          $(".editbtn").hide();
-          $("#message").show();
           this.temp = true;
-          $("#profilecard").show();
-          $("#profileform").hide();
-          setTimeout(() => {
-            this._router.navigate(['/userdashboard']);
-          }, 6000);
+          this.showProfileCard();
+          $("#message").show();
+          setTimeout(() => this.router.navigate(['/userdashboard']), 6000);
         },
         error => {
-          alert("Profile image uploaded successfully")
-          console.log("emailid"+this.professor.email);
-          console.log("Profile image upload failed");
-          console.log(error.error);
+          alert("Profile image upload failed");
+          console.error("Profile image upload failed", error);
           this.msg = "Profile Image Upload Failed !!!";
         }
       );
     }
   }
 
-  //--------------------------------------------------------------------------------------------
   loadProfileImage(): void {
     const userEmail = this.loggedUser;
-    this.http.get(`http://localhost:8080/profile/getprofile/${userEmail}`, { responseType: 'blob' })
+    this._http.get(`http://localhost:8080/profile/getprofile/${userEmail}`, { responseType: 'blob' })
       .subscribe(
         response => this.createImageFromBlob(response),
         error => {
@@ -136,13 +122,11 @@ export class ProfessorprofileComponent implements OnInit {
   createImageFromBlob(image: Blob): void {
     let reader = new FileReader();
     reader.addEventListener("load", () => {
-       this.imageData = reader.result as string;
+      this.imageData = reader.result as string;
     }, false);
 
     if (image) {
-       reader.readAsDataURL(image);
+      reader.readAsDataURL(image);
     }
   }
 }
-
-

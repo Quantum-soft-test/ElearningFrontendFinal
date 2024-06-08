@@ -12,6 +12,7 @@ export class Course
     skilllevel : string = '';
     language : string = '';
     description : string  = '';
+    driveurl: string ='';
 
     constructor() {}
     

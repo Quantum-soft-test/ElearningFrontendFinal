@@ -6,7 +6,7 @@
         <!-- <a><img  class="bloodimg" [src]="'assets/img/femaleuser.png'" width="140" height="140"></a> -->
         <a>
             <div style="text-align: right;height: 25px; ">
-              <img [src]="imageData" alt="User Image" *ngIf="!editingProfile">
+              <img [src]="imageData" alt="User Image" *ngIf="!editingProfile" class="profile-image">
             </div>
           </a>
         
@@ -52,6 +52,7 @@
                                     <option value="" disabled selected>Select gender *</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
                                 </select>                                </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="your profession *" name="userprofession" [(ngModel)]="user.profession" required 

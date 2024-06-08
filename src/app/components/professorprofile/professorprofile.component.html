@@ -2,14 +2,11 @@
 
 <div class="row" id="profilecard">
     <div *ngFor="let professor of profileDetails | async" id="bloodCards">
-
         <a>
-            
-            <div  style="text-align:right; height: 25px; ">
-              <img [src]="imageData" alt="User Image" *ngIf="!editingProfile">
+          <div  style="text-align:right; height: 25px; ">
+              <img [src]="imageData" alt="User Image" *ngIf="!editingProfile" class="profile-image">
             </div>
           </a>
-
                 <div class="card-block">
             <div class="text"><b class="element" style="margin-left: 6%;"> {{professor.professorname}}</b> </div>
             <div class="text"><small style="font-size: smaller; margin-left: 6%; padding: 3px 8px 3px 8px; background-color: rgb(87, 64, 8); border-radius: 10px; font-weight: bold; width: 55%; color: white;">{{professor.professorid}}</small> </div>
@@ -35,7 +32,9 @@
                     <form #Updateform="ngForm" style="margin-top: -15%;" (ngSubmit)="updateProfessorProfile()">
                         <div class="row register-form">
                             <div class="col-md-6">
+                                
                                 <div  *ngFor="let professor of profileDetails | async" class="form-group">
+
                                     <input type="text" class="form-control" placeholder="Professor Name *" name="professorname" [(ngModel)]="professor.professorname" required 
                                     #professorname="ngModel"
                                     [class.is-invalid]="professorname.invalid && professorname.touched">
@@ -50,18 +49,18 @@
                                         <small class="text-danger" *ngIf="professoremail.errors.pattern"><b>Invalid email Id</b></small>
                                       </div>                          
                                 </div>
-                                <div class="form-group">
-                                    <select 
-                                    class="form-control" 
-                                    name="usergender" 
-                                    [(ngModel)]="professor.gender" 
-                                    required 
-                                    #usergender="ngModel"
-                                    [class.is-invalid]="usergender.invalid && usergender.touched" required>
+
+                                <div class="form-group"><select class="form-control" name="professor"[(ngModel)]="professor.gender"required 
+                                    #professorgender="ngModel"
+                                    [class.is-invalid]="professorgender.invalid && professorgender.touched" required>
                                     <option value="" disabled selected>Select gender *</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
-                                </select>                                </div>
+                                    <option value="Other">Other</option>
+                                </select>                               
+                               </div>
+
+
                                 <div class="form-group">
                                     <input type="tel" maxlength="10" minlength="10" class="form-control" placeholder="mobile *" name="professormobile" [(ngModel)]="professor.mobile" required 
                                     #professormobile="ngModel"
@@ -111,13 +110,36 @@
                                 </div>
 
 
-                                <form (ngSubmit)="onSubmit(professor.email)"  #uploadForm="ngForm" enctype="multipart/form-data">
+                                <!-- <form (ngSubmit)="onSubmit(professor.email)"  #uploadForm="ngForm" enctype="multipart/form-data">
                                     <div>
                                       <label for="file">Upload Image:</label>
                                       <input type="file" id="file" (change)="onFileSelected($event)" required>
                                     </div>
                                     <button type="submit" [disabled]="!selectedFile">Submit</button>
-                                  </form>
+                                  </form> -->
+
+                                  <div class="container">
+                                    <form (ngSubmit)="onSubmit(professor.email)" #uploadForm="ngForm" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="file" class="upload-label">
+                                                <input type="file" id="file" (change)="onFileSelected($event)" required>
+                                                <span>Select Image</span>
+                                            </label>
+                                            <button type="submit" [disabled]="!selectedFile" class="link-button">Upload Image</button>
+                                        </div>
+                                            <div *ngIf="selectedFile" class="file-name">
+                                                {{ selectedFile }}
+                                            </div>
+                                        
+                                        <!-- <button type="submit" [disabled]="!selectedFile">Upload Image</button> -->
+
+                                    </form>
+                                </div>
+
+
+
+
+
                             </div>
                         </div>
                         <button [disabled]="Updateform.form.invalid" type="submit" class="btn registerbtn">Update</button>
@@ -128,4 +150,4 @@
     </div>
 </div>
 
-<app-footer> </app-footer>
+<!-- <app-footer> </app-footer> -->

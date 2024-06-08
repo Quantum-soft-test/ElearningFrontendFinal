@@ -21,6 +21,7 @@ declare var Razorpay: any;
 
 export class CourselistComponent implements OnInit  {
   
+  googledrivecourselist: Observable<Course[]> | undefined;
   youtubecourselist : Observable<Course[]> | undefined;
   websitecourselist : Observable<Course[]> | undefined;
   courselist : Observable<Course[]> | undefined;
@@ -54,6 +55,8 @@ export class CourselistComponent implements OnInit  {
 
     this.youtubecourselist = this.userService.getYoutubeCourseList();
     this.websitecourselist = this.userService.getWebsiteCourseList();
+    this.googledrivecourselist = this.userService.getGoogleDriveList();
+     
 
     const target = 'https://www.youtube.com/iframe_api'
 
@@ -65,8 +68,11 @@ export class CourselistComponent implements OnInit  {
 
   $("#youtubecoursecard").css('display','block');
   $("#websitecoursecard").css('display','block');
+  $("#Googledrivecoursecard").css('display','block');
   $("#likedbtn").hide();
   $("#enrollsuccess").hide();
+
+
   
   $("#youtubecard").click(function(){
     $("#youtubecoursecard").css('display','none');
@@ -75,6 +81,12 @@ export class CourselistComponent implements OnInit  {
   });
 
   $("#websitecard").click(function(){
+    $("#youtubecoursecard").css('display','none');
+    $("#websitecoursecard").css('display','none');
+    $("#coursedetailscard").show();
+  });
+
+  $("#Googledrivecoursecard").click(function(){
     $("#youtubecoursecard").css('display','none');
     $("#websitecoursecard").css('display','none');
     $("#coursedetailscard").show();
@@ -91,7 +103,9 @@ getcoursedetails(coursename : string)
 {
   $("#youtubecoursecard").css('display','none');
   $("#websitecoursecard").css('display','none');
+  $("#Googledrivecoursecard").css('display','none');
   $("#coursedetailscard").show();
+
   this.courselist = this.userService.getCourseListByName(coursename);
   this.enrollmentstatus = this.userService.getEnrollmentStatus(coursename,this.loggedUser,this.currRole);
   this.wishliststatus = this.userService.getWishlistStatus(coursename,this.loggedUser);
@@ -105,6 +119,7 @@ backToCourseList()
 {
     $("#youtubecoursecard").css('display','block');
     $("#websitecoursecard").css('display','block');
+    $("#Googledrivecoursecard").css('display','block');
     $("#coursedetailscard").hide();
 }
 
@@ -135,6 +150,7 @@ enrollcourse(course : Course, loggedUser : string, currRole : string)
   setTimeout(() => {
     $("#youtubecoursecard").css('display','none');
     $("#websitecoursecard").css('display','none');
+    $("#Googledrivecoursecard").css('display','none');
     $("#coursedetailscard").hide();
     $("#enrollsuccess").show();
   },5000);
@@ -191,6 +207,9 @@ visitCourse(coursename : string)
   
 gotoURL(url : string)
 {
+
+  
+  console.log("Opening URL:", url);
   (window as any).open(url, "_blank");
 }
 

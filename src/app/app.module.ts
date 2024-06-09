@@ -42,6 +42,7 @@ import { CertificateComponent } from './components/certificate/certificate.compo
 import { RatingPipe } from './models/rating.pipe';
 import { ReviewComponent } from './components/review/review.component';
 import { AddreviewComponent } from './components/addreview/addreview.component';
+import { PopupAdComponent } from './components/popup-ad/popup-ad.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { AddreviewComponent } from './components/addreview/addreview.component';
     CertificateComponent,
   
     aboutusComponent,
+        PopupAdComponent,
 
     
   ],

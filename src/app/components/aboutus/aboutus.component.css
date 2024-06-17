@@ -1,4 +1,10 @@
 .navbar-brand{
     height: 70;
     width: 100;
+    align-content: center;
+    margin-left: 35%;
+}
+.tabonlogo{
+    width: 100%;
+    background-color: rgb(49, 48, 48);
 }
